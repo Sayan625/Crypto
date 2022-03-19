@@ -29,7 +29,7 @@ const CryptoDetails = ({ id }) => {
 
     useEffect(() => {
         getDetails(id)
-    }, [])
+    }, [id])
 
     async function getDetails(id) {
         setLoading(true)

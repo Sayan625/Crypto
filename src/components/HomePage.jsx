@@ -30,24 +30,23 @@ const HomePage = ({ currentCoins, allData, length, setCurrentPage, currentPage, 
     else if (searchValue === null || undefined || "" || " ")
       setSearchedCoins([])
 
-  }, [searchValue])
+  }, [searchValue,allData])
 
 
-  console.log("search", searchedCoins)
-  console.log("search", searchValue)
+
   for (let i = 1; i <= Math.ceil(length / coinsPerpage); i++) {
     pageNo.push(i)
   }
 
   function formatter(number) {
     if (number < 999)
-      return parseFloat(number).toLocaleString('en-IN')
+      return `${parseFloat(number).toLocaleString('en-IN')}`
     if (number > 999 && number < 99999)
-      return parseFloat((number / 1000).toFixed(2)).toLocaleString('en-IN') + " " + "K"
+      return `${parseFloat((number / 1000).toFixed(2)).toLocaleString('en-IN')} K`
     if (number > 99999 && number < 9999999)
-      return parseFloat((number / 100000).toFixed(2)).toLocaleString('en-IN') + " " + "L"
+      return `${parseFloat((number / 100000).toFixed(2)).toLocaleString('en-IN')} L`
     if (number > 9999999)
-      return parseFloat((number / 10000000).toFixed(2)).toLocaleString('en-IN') + " " + "Cr"
+      return `${parseFloat((number / 10000000).toFixed(2)).toLocaleString('en-IN')} Cr`
   }
 
 
@@ -73,8 +72,8 @@ const HomePage = ({ currentCoins, allData, length, setCurrentPage, currentPage, 
         <Typography variant='h4'>Top Trending Crypto coins</Typography>
       </Container>
       <Container sx={{ display: "flex", justifyContent: 'space-between' }}>
-        {trending.map(element => (
-          <Card  sx={{ maxWidth: "250px", p:1,
+        {trending.map((element,index )=> (
+          <Card key={index} sx={{ maxWidth: "250px", p:1,
           ':hover': {
             boxShadow: 5,
           }
@@ -105,6 +104,9 @@ const HomePage = ({ currentCoins, allData, length, setCurrentPage, currentPage, 
                   {element.price_change_percentage_24h.toFixed(2)}%
                 </TableCell>
               </TableRow>
+              {/* <TableRow>
+                <Button variant='contained'><Link to={`/details/${element.id}`}>Know More</Link></Button>
+              </TableRow> */}
             </TableContainer>
             </CardActionArea>
           </Card>
