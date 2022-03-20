@@ -15,9 +15,9 @@ function App() {
   const coinsPerpage = 10
 
 
-
   useEffect(() => {
     async function getData() {
+      setLoading(true)
       const data = await axios.get("https://api.coingecko.com/api/v3/coins/markets?vs_currency=inr&order=market_cap_rank&per_page=100&page=1&sparkline=false")
       setAllData(data.data?.sort((a,b)=>  parseFloat(a.market_cap_rank) - parseFloat(b.market_cap_rank)))
       
@@ -30,6 +30,7 @@ function App() {
       setLoading(false)
     }
     getData()
+
 // eslint-disable-next-line
   },[])
 
@@ -72,7 +73,7 @@ function App() {
               currentPage={currentPage}
               trending={trending} />}/>
             
-          <Route path='/details/:id' element={<CoinDetails/>}/>
+          <Route path={`/details/:id`} element={<CoinDetails/>}/>
         </Routes>
         }
     </Router>

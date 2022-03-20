@@ -30,7 +30,7 @@ const HomePage = ({ currentCoins, allData, length, setCurrentPage, currentPage, 
     else if (searchValue === null || undefined || "" || " ")
       setSearchedCoins([])
 
-  }, [searchValue,allData])
+  }, [searchValue, allData])
 
 
 
@@ -63,52 +63,51 @@ const HomePage = ({ currentCoins, allData, length, setCurrentPage, currentPage, 
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-          <Link to="/">Coin Tracker</Link>
+            <Link to="/">Coin Tracker</Link>
           </Typography>
           <TextField placeholder='Search Coins' size="small" style={{ padding: '5px' }} value={searchValue} onChange={(e) => { setSearchValue(e.target.value) }} />
         </Toolbar>
       </AppBar>
-      <Container sx={{mb:2}}>
+      <Container sx={{ mb: 2 }}>
         <Typography variant='h4'>Top Trending Crypto coins</Typography>
       </Container>
       <Container sx={{ display: "flex", justifyContent: 'space-between' }}>
-        {trending.map((element,index )=> (
-          <Card key={index} sx={{ maxWidth: "250px", p:1,
-          ':hover': {
-            boxShadow: 5,
-          }
+        {trending.map((element, index) => (
+          <Card key={index} sx={{
+            maxWidth: "250px", p: 1,
+            ':hover': {
+              boxShadow: 5,
+            }
           }} >
-            <CardActionArea href={`/details/${element.id}`}>
-            <TableContainer>
-              <TableRow >
-                <TableCell  style={{borderBottom:"none"}}>
-                  <img src={element.image} alt="" />
-                </TableCell >
-                <TableCell style={{borderBottom:"none"}}>
-                  <h4>{element.name}</h4>
-                </TableCell>
-              </TableRow>
-              <TableRow >
-                <TableCell style={{borderBottom:"none"}}>
-                  Price
-                </TableCell>
-                <TableCell align='center' style={{borderBottom:"none"}}>
-                ₹ {formatter(element.current_price)}
-                </TableCell>
-              </TableRow>
-              <TableRow >
-                <TableCell style={{borderBottom:"none"}}>
-                  24h
-                </TableCell>
-                <TableCell align='center' style={{borderBottom:"none"}}>
-                  {element.price_change_percentage_24h.toFixed(2)}%
-                </TableCell>
-              </TableRow>
-              {/* <TableRow>
-                <Button variant='contained'><Link to={`/details/${element.id}`}>Know More</Link></Button>
-              </TableRow> */}
-            </TableContainer>
-            </CardActionArea>
+              <CardActionArea component={Link} to={`/details/${element.id}`} >
+                <TableContainer>
+                  <TableRow >
+                    <TableCell style={{ borderBottom: "none" }}>
+                      <img src={element.image} alt="" />
+                    </TableCell >
+                    <TableCell style={{ borderBottom: "none" }}>
+                      <h4>{element.name}</h4>
+                    </TableCell>
+                  </TableRow>
+                  <TableRow >
+                    <TableCell style={{ borderBottom: "none" }}>
+                      Price
+                    </TableCell>
+                    <TableCell align='center' style={{ borderBottom: "none" }}>
+                      ₹ {formatter(element.current_price)}
+                    </TableCell>
+                  </TableRow>
+                  <TableRow >
+                    <TableCell style={{ borderBottom: "none" }}>
+                      24h
+                    </TableCell>
+                    <TableCell align='center' style={{ borderBottom: "none" }}>
+                      {element.price_change_percentage_24h.toFixed(2)}%
+                    </TableCell>
+                  </TableRow>
+                </TableContainer>
+                
+              </CardActionArea>
           </Card>
         ))}
       </Container>
