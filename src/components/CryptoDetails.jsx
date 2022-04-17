@@ -102,8 +102,6 @@ function generateData(value){
 }
     
 
-    
-
     const options = {
         responsive: true,
         maintainAspectRatio: false,

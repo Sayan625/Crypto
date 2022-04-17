@@ -57,7 +57,11 @@ function App() {
 
 
   return (
-
+    <>
+    <div className="blocker">
+      Please View in Desktop
+    </div>
+    <div className="app">
     <Router>
         { loading? <div className="loader">
           <span className="loadImg"></span>
@@ -77,6 +81,8 @@ function App() {
         </Routes>
         }
     </Router>
+    </div>
+    </>
   );
 }
 

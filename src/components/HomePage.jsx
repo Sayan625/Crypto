@@ -71,9 +71,9 @@ const HomePage = ({ currentCoins, allData, length, setCurrentPage, currentPage, 
       <Container sx={{ mb: 2 }}>
         <Typography variant='h4'>Top Trending Crypto coins</Typography>
       </Container>
-      <Container sx={{ display: "flex", justifyContent: 'space-between' }}>
+      <Container className='trndingContainer' sx={{ display: "flex", justifyContent: 'space-between' }}>
         {trending.map((element, index) => (
-          <Card key={index} sx={{
+          <Card className='card' key={index} sx={{
             maxWidth: "250px", p: 1,
             ':hover': {
               boxShadow: 5,
