@@ -63,7 +63,7 @@ const HomePage = ({ currentCoins, allData, length, setCurrentPage, currentPage, 
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}
           >
-            <Link to="/">Coin Tracker</Link>
+            <Link to="/">Crypto Coin Tracker</Link>
           </Typography>
           <TextField placeholder='Search Coins' size="small" style={{ padding: '5px' }} value={searchValue} onChange={(e) => { setSearchValue(e.target.value) }} />
         </Toolbar>
